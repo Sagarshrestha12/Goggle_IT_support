@@ -1,0 +1,17 @@
+Which of these are example of 'something you have' for multifactor authentication. 
+--> RSA secureID token ( It is an example of OTP which small battery powered device with lcd display )
+-->OTP is one time password, which is physical token that is commonly used to generate a short-lived number.
+
+An organization needs to setup an CA infrastructure to issue and sign client certificates which is used to present to sever for verification (authentication)
+
+A flat file is internal source that can store user accounts on a RADIUS server.
+The benefits of using a Single Sign-On(SSO)  authentication service are :
+-->Reduce time spent on re-authenticating to service 
+--> It allow user to have one set of credentials for users
+--> It also reduce overhead of password assistance
+--> It also reduce likelihood of password being written down
+
+An Access Control List defines permissions or authorizations for objects.
+
+Well keeping track of access and changes , through logging , satisfies the "Accounting".
+
