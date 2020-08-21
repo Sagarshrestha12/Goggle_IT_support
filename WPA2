@@ -18,3 +18,34 @@ Storage capacity is important to consider for log and packet capture retention r
 IDS can alert on detected attack traffic but IPS can actively block or drop attack traffic. IDS only detects intrusions or attacks, while an IPS can make changes in firewall rules to actively drop or block dectected attack traffic.
 
 If your NIC(network Intrusion control) isn't in monitor or promiscuous mode,it'll only capture the traffic or packet sent by and sent to your host. In order to capture traffic , you need to be able ot access the packets. So, being connected to switch wouldn't allow you to capture other clients traffic . The solution for this is port mirroring which is features in most enterprise switches.
+
+Week Four Practice Quiz:
+
+what traffic would a implicit deny firewall rule block?
+--> Implicit deny is security technique that block all traffic i.e everything unless it is explicitly allowed. In implicit deny , you have to manually specify which traffic you want to allow to pass through that firewall, everything else not specified is blocked. For example, all Ip address and port numbers is blocked except what's in ACL.
+Outbound traffic is packet that is moving from internal network to somewhere outside your network. Inbound is information coming-in to a network.
+2. The process of converting log entry field into a standard format is called log normalization.
+--> Normalizing logs is process of ensuring that all log fields are in standardized format for analysis and search purpose.
+
+3--> A Flood Guard can protect your network for any types of flood attack such as DoS attacks. Flood guards provide the protection from DoS attacks by blocking common flood attack when it's detected
+
+4--> Using different VLANs for different network devices is an example of network seperation.
+
+5--> To protect against rogue DHCP server attack ,you need to use DHCP snooping.
+By using DHCP snooping in network switches, we can drop DHCP offer message comming from the untrusted port from rouge DHCP server. 
+DHCP spoofing attack occurs when attacker attempts to respond to DHCP request and trying to list itshelf as default gateway or DNS server,hence ,initaiting a man in middle attack.With that it is possible that they can intercept traffic from user before forwarding to real gateway or perform DoS by flodding the real DHCP server with request to choke ip address resources.
+DHCP snooping does this by creating a mapping of ip address to switch port and kepping track of authoritative DHCP servers.
+6--> Dynamic ARP inspection protect against ARP man-in-the-middle attack.
+Main purpose of ARP table is not for security reason . It's main purpose is to store info about mapping of ip address and corresponding mac address. It accepts the arp response even if don't send the arp req. Due to which it create security hole in network.Dynamic ARP inspection(DAI) is security feature that rejects invlaid and malicous ARP response. Dynamic ARP inspection relies on DHCP snooping . DHCP snooping listens to DHCP message exchange and builds a binding database of valid tuples(MAC,IP, VLAN). When DAI is enabled , the switch drop ARP packet if sender MAC address and sender IP address don't match an entry in DHCP snooping binding database.
+
+7--> IP source Guard protect against IP spoofing attack. ISG does this by dynamically generating ACLs for each switch port, only permitting traffic for mapped IP address for that port.
+8--> A reverse proxy can be used to allow remote access into network.
+9--> WEP uses the RC4 stream cipher.
+10--> WEP supports 64 and 128-bit encryption keys.
+11--> The recommended way to protect a WPA2 network is using unique SSID and long, complex passphrase because SSID is used as salt,it should be something unique to protect against rainbow table attacks.A long, complex password will protect against brute-force attacks.
+12--> Since you're connected to a switch, you'd only see pck that are sent to your switch port, meaning traffic to and from your machine or broadcast packets.
+13--> To sniff traffic on a switch ,i could use port mirroring
+--> NIDS only alerts when it detects a potential attack. 
+
+
+
