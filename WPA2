@@ -1,0 +1,20 @@
+Why do we have authentication before we successfully passed security.
+Summary of the machine connecting to open SSID:
+-->STA is unauthenticated and unassociated
+-->STA becomes authenticated and unassociated
+-->STA becomes authenticated and associated
+-->STA clears security requirements such as 802.1X, if required
+Don't get confused with first authentication state with security. Think this as acess point is verifything that you are valid 802.11 device and both client and AP can understand with each others.SO, now a days , authentication req always has successful authentication respose because AP understoods you.
+
+Network Monitoring Quiz:
+What does tcpdump do:
+--> Analyze packet and provides textual analysis(Tcpdump is popular, lightweight command line tool for capturing the packets and analyzing the network traffic).
+wireshark also provides same features as tcpdump but it way more strong and powerful than it. It provides GUI interface. Other things that it do diffrently than tcpdump are:  It understands more application-level protocols.
+
+The factors should you consider when designing an IDS(Intrusion Detection System) installation are :
+Traffic bandwidth and storage capacity. It's important to understand the amount of the traffic the IDS would be analyzing.This ensures that IDS system is capable of keeping up with volume of traffic i.e this will help in making sure that IDS will be capable of handling volume of traffic. 
+Storage capacity is important to consider for log and packet capture retention reason.
+
+IDS can alert on detected attack traffic but IPS can actively block or drop attack traffic. IDS only detects intrusions or attacks, while an IPS can make changes in firewall rules to actively drop or block dectected attack traffic.
+
+If your NIC(network Intrusion control) isn't in monitor or promiscuous mode,it'll only capture the traffic or packet sent by and sent to your host. In order to capture traffic , you need to be able ot access the packets. So, being connected to switch wouldn't allow you to capture other clients traffic . The solution for this is port mirroring which is features in most enterprise switches.
