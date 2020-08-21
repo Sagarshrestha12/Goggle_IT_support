@@ -1,0 +1,7 @@
+Well ip address is unique number assigned to computer connected to the network. There are two kind of ip address:
+1. private ip address
+2. public ip address
+Private ip address:
+ It is an ip address used to communicate within the same network. Using this private ip address ,info can be sent or receive within the same network. It is used to load network operating system. It is available free of cost 
+Public ip address:
+ Public ip address is ip address used to communicate outside the network. Public IP address is basically assigned by ISP. It is controlled by ISP. It is not free of cost.Besides private ip address , rest are public .
