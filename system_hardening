@@ -1,0 +1,23 @@
+What is attack vector? 
+1--> Attack vector is mechanism by which attacker can interact with your network or a system. Attack vector can be thought of as any route through which an attacker can interact with your systems and potentially attack them i.e make damage to them.
+
+2--> Disabling the unnecessay components serves as reducing attack surface (where attack surface is combined sum of all attack vectors in a system or network) and closing attack vectors. Since, every unnecessary components represents a potential attack vector. So, disabling unnecessary components closes attack vectors ,therby reducing attack surface. Attack surface describes all possible ways(route) an attacker could interact and exploit potential vulnerabilities in the network and connected systems.
+3--> Good defense in depth strategy would involve deploying both host-based and network-based firewalls. Defense in depth involves multiple layers of overlapping security.
+4--> Bastion hosts are designed for one very specific purpose.Unnecessary software should not be permitted on the bastion host to maintain a higher level of security. Using bastion host allow for applying more restrictive firewalls rules.This are special purpose machine that permits restricted access to more sensitive networks or systems. By having one specific purpose, these system can have strict authentication enforced, more firewalls rules locked down and closer monitoring and logging.
+
+Centralized logging is helpful for event reconstructionand analysis. It allow for easier log analysis. It can harden the log server to resist attempt from attacker trying to delete logs to cover their track.
+The shortcomming of antivirus today is that it can't protect against unknown traffic . Antivirus software operates off a blacklist,blocking known bad entities. This means that brand new, never-before-seen malware won't be blocked. 
+
+Binary whitelisting is better option than antivirus software because it block unknown or emerging threats
+Since by blocking everthing by default, binary whitelisting can protect you from the unknown threats that exit without you being aware of them.
+
+Full Disk Encryption protect against the data theft and tampering(interfere) with system files. With the contents of the disk encrypted, an attacker wouldn't be able to recover the data from drive in the event of physical theft. An attacker also wouldn't be able to temper with system files or replace system files with malicious ones.
+
+The main purpose of escrowing a disk encryption key is performing data recovery.Key escrow allows the disk to be unlocked if the primary passphrase is forgetten or unavilable for whatever reason.
+Having detailed log allow us to review event and audit actions taken. If an incident occurs, detailed logs allow us to recreate the events that caused it.
+An attack vector is important when talking about methods that allow hacker to gain this access. Attack vector can be used by an attacker to compromise and gain unauthorized access to system. 
+
+To get detailed info about the compromise , an analyst can use system information and event Management system(SIEM)  and logs. SIEM system is central log server that ingest all the logs to help analyst make sense of it all. Logs give the analyst visiblity into the events and detailed information about traffic and activity that's going on in the network  and its systems. They can be used to detect compromise or attempts to attack system. 
+Antivirus which is designed to protect systems, actually represents an additional attack surface that attacker can exploit to compromise system.
+It is generally a good idea to have policy to disallow particularly risky classes of software. Things like file sharing software and piracy-related software tends to be closely associated with malware infection
+
