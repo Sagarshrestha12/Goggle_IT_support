@@ -1,0 +1,69 @@
+Setting up an DNS caching server on Linux?
+--> 
+DNS lookup are not normally needed to worry about. Sometimes you should. If our home or office's ISP has slow nameserver or your office server is performing the lots of lookups , then we need a local caching DNS server.
+--> A caching DNS server works by performing all the DNS queries that your system makes and then saving, or caching ,the results in memory. Once that the result is cached in memory, any time our system makes the same DNS query. Responding to same dns query multiple times. This help us if ISP's DNS server are taking their time to respond, it will slow us our internet browsing considerably.
+--> systemd-resolved supports very latest , secure DNS standard DNSSEC and DNSoverTLS or DoT.These help keep you secure and retain your privacy online .Applying DoT means making DNS query over secure commination i.e TLS(which uses the public key cryptography to securely commincate).
+Which local caching DNS will we use?
+The local caching DNS server that we will enable and configure in this case is systemd-resolved which is part of systemd suite of system management tool.  
+Most of linux distro don't use systemd-resolved even though it is present. systemd-resolved works by running a small local caching DNS server which can configure to start on boot i.e running these caching DNS server while boot. After configuring to start this server on boot ,we will then re-configure the rest of the system to direct their DNS queries to the local caching DNS server(i.e systemd-resolved DNS).
+
+Well, we can check wheather the service is running or not using the below command:
+sudo systemctl status systemd-resolved
+or sudo service systemd-resolved status
+
+If systemd-resolved is not enable the follow the below step to enable and configure it:
+
+We don't need to install systemd-resolvd as it is already a part of systemd.
+All we need to do is start it to get DNS caching server running and enable it to start it on boot. If we need to start any service on boot then we need to enable that service using the command below:
+#First starting the service : 
+--> sudo systemctl start systemd-resolved.service
+Now, to start the service on system boot-up all we need to do is enable service using command:
+--> sudo systemctl enable systemd-resolved.service
+
+The last item of configuration left is to set DNS server that systemd-resolved will query to resolved domain if the entry is not found its cache. Now, that local DNS server will forward query to authoritive server. There are following pair which is freee,fast and they both support DNSSEC and DoT:
+Google Public DNS:
+8.8.8.8 and 8.8.4.4
+
+Cloudflare Public DNS
+1.1.1.1 and 1.0.0.1
+
+For that we have configure the systemd-resolved configuration file with our favorite text editor:
+--> sudo nano /etc/systemd/resolved.conf
+All the configuration file of any service is stored in /etc directory in most of linux distro.
+edit the line #DNS=1.1.1.1 1.0.0.1
+
+Save it and restart the caching DNS server i.e systemd-resolved
+sudo systemctl restart systemd-resolved.service
+By restarting the service , now the service will use the new configuration file just edit instead of the old one , otherwise that service will use the old conf file.
+
+
+Now ,Configuring the system to use systemd-resolved:
+Your system can be configured in many ways to use systemd-resolved, but will now only look at two method.
+1--> Recommended method
+2--> Compatibility method
+The diffrence between these method is how the /etc/resolve.conf is managed.
+
+/etc/resolv.conf file holds the ip address of the nameserver that progrom on the system should query. Program on our system will make use of this file if it needs to make DNS query to find out which server they should contact to make those dns query.
+Compatibility mode allows other program to manage the /etc/resolve.conf while systemd-resolved uses that DNS information. In this mode, the other program managing  /etc/resolv.conf must be configured to set 123.0.0.53 as the system nameserver in /etc/resolv.conf.
+--> sudo nano /etc/resolv.conf
+and add nameserver 127.0.0.53
+
+To know how our system is making DNS queries after these changes can be difficult. So,to get info about what is happening behind the scene is to run systemd-resolved service in debugging mode and watch the log file.
+And, since the systemd-resolved is systemd service ,it can be easily put in debugging mode by creating a drop-in service file that contains the debug setting.
+Following command will create drop-in service file in the correct location:
+-->sudo systemctl edit systemd-resolved.service
+and add line:
+Enviroment-SYSTEMD_LOG_LEVEL=debug
+
+Open the second terminal and follow the journald log for the systemd-resolved service:
+-->sudo journalctl -f -u systemd-resolved
+
+After examing the log file ,we have to disable dibugging mode by deleting the file we have just created.
+
+systemd-resolved is one of the few, currently available DNS servers that support both DNSSEC and DNSoverTLS. Both of these help to ensure that you are receiving genuine DNS information (DNSSEC) and that no one can snoop on your DNS traffic as it passes over the internet. (DoT).
+
+These options are easily enabled by opening systemd-resolved’s main configuration file with a text editor:
+sudo nano /etc/systemd/resolved.conf
+set line:
+DNSSEC=allow-downgrade
+DNSOverTLS=opportunistic

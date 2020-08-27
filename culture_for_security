@@ -1,0 +1,8 @@
+Things to be consider when evaluating a vulnerablity  are how likely it is to be exploited, the type of access gained by attacker, and wheather or not the vulnerablity is exploited remotely.
+A quick and effective way of evaluating a third party's security is a security assessment questionnaire. It would help you understand how well-defended a third party is , before deciding to do business with them.
+Before restoring normal operation and data, underlying root cause should be correct during the recovery phase. Ideally , you'd to figure out what caused the incident in the first place, and make changes to avoid a similar incident from ocurring in future.
+Password an U2F token don't include user identification,which are used for 2-factor authentication.
+
+Penetration testing is the practice of attempting to break into a system or network for the purpose of verification of system in place.
+A company can establish a approved and safe mechanism, such as secure cloud storage solution ,to share large files securely with others remotely.
+Establishing a virtual private network with headquarters will allow the file to be shared directly and
