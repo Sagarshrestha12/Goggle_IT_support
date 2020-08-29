@@ -1,0 +1,8 @@
+Generating the public and private key using the rsa algorithm( openssl library which is open source cryptograhic library):
+First we need to create the private key using rsa algorithm which is used to decrypt the message send to us using the my own public key. With the help of the public key , anyone can send the encryted message to me , so that only i can decrypt it using my private key. I shouldn't share my private key , because if any one had my private key then they can also decryt the message intented for me. Command to create the  private key using the openssl command :
+--> openssl genrsa -out private.pem 2048
+The following command generate the 2048-bit rsa private key, and save it into private.pem file . It is defacto file for storing and sending the cryptographic key.The private key generated must be different at every time . If that is not the case then openssl was generating the same key over and over, we'd be in serious trouble.
+
+Generating a public key using private key:
+So, when the data is hashed using your public key , nobody will be able to decrypt it unless they have your private key.So to create the public key based on the private key , enter the command below. 
+--openssl rsa -in private_key.pem -outform PEM -pubout public.pem
